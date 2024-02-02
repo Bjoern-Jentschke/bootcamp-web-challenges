@@ -2,7 +2,10 @@ import React from "react";
 import "./styles.css";
 
 export default function App() {
-  return <Sum valueA={5} valueB={5}/>;
+  return <div><Sum valueA={8} valueB={12}/>
+  <Sum valueA={8} valueB={12}/>
+  <Sum valueA={8} valueB={12}/>
+  </div>
 }
 
 function Sum({ valueA, valueB }) {
