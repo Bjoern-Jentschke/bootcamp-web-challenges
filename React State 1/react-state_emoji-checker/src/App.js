@@ -8,18 +8,18 @@ export default function App() {
 
   const validCode = "🐡🐠🐋";
 
-  function handleClick () {
+  function handleClick (event) {
     setCode(code + event.target.textContent);
   }
 
+console.log(code);  
   return (
     <div className="container">
       <div className="button-container">
         <button
           type="button"
-          onClick={() => {
-            handleClick();
-            console.log(code)
+          onClick={(event) => {
+            handleClick(event);
           }}
         >
           <span role="img" aria-label="Pufferfish">
@@ -28,8 +28,8 @@ export default function App() {
         </button>
         <button
           type="button"
-          onClick={() => {
-            handleClick();
+          onClick={(event) => {
+            handleClick(event);
           }}
         >
           <span role="img" aria-label="Whale">
@@ -38,8 +38,8 @@ export default function App() {
         </button>
         <button
           type="button"
-          onClick={() => {
-            handleClick();
+          onClick={(event) => {
+            handleClick(event);
           }}
         >
           <span role="img" aria-label="Clownfish">
