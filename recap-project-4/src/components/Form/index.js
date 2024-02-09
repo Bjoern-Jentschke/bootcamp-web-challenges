@@ -4,7 +4,8 @@ export default function Form({onAddActivity}) {
 
     function handleSubmit(event) {
         event.preventDefault();
-     // after preventing the default behaviour of the form element we grab the information of the form elementinto variables
+     // after preventing the default behaviour of the form element we grab the information of the form element 
+     //into variables
         const form = event.target;
         const name = event.target.elements.name.value;
         const activity = event.target.elements.activity.checked; // checked prevents default behavior (on)
