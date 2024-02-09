@@ -15,7 +15,9 @@ function App() {
    function handleAddActivity(newActivity) {
     //understanding of the following line: the function setActivities is setting the newActivity, passing a unique id to it while creating 
     // an object and adding with the spread operator the newActivity to the other activities into an array of objects
-      setActivities([{newActivity, id: uid()}, ...activities])
+      // setActivities([{newActivity, id: uid()}, ...activities])
+
+      setActivities([{...newActivity, id: uid()}, ...activities])
    }
 
   return (
