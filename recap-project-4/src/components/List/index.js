@@ -1,7 +1,9 @@
 import "./List.css";
 
-export default function List () {
+export default function List ({activities}) {
     return (
-        <li></li>
+        <ul>
+        {activities.map((activity) => (<li key={activity.id}>{activity.name}</li>))}
+    </ul>
     )
 }

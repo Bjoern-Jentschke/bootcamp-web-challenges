@@ -1,12 +1,15 @@
 // import './App.css';
-import Form from './components/Form';
-import {useState} from "react"
+import Form from './components/Form/index';
+// import {useState} from "react" Aufgabe 1
 import {uid} from "uid"
+import List from './components/List/index';
+import useLocalStorageState from "use-local-storage-state";
 
 function App() {
   // Why setting state in App.js? Possible answer: Parent element of Form.js. Here we want to change the state while
   // displaying the new activity
-   const [activities, setActivities] = useState([]);
+  //  const [activities, setActivities] = useState([]); Aufgabe 1//
+   const [activities, setActivities] = useLocalStorageState("activities", {defaultValue: []});
 
    //here we set up the new activity
    function handleAddActivity(newActivity) {
@@ -20,6 +23,7 @@ function App() {
       <header className="App-header">
       </header>
       {/* passing the function handleAddActivity as a prop to the Form component */}
+      <List activities={activities}/>
       <Form onAddActivity={handleAddActivity} />
     </div>
   );
