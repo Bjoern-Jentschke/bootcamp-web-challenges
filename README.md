@@ -1,5 +1,3 @@
-# Web Challenges
+# neue-fische-bootcamp-web
 
-In this repository you will share your challenges.
-
-Please refer to the instructions in your course repository to know more about the workflow.
+In this repository I am sharing all challenges from the web-development bootcamp of neue-fische.
