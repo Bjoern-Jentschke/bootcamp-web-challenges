@@ -36,8 +36,13 @@ function App() {
       console.error('Hay un error Aqui');
     }}
     fetchWeather();
+    
+    //to set an interval you need the following build up. The interval variable consists of a function that has a callbackfunction and a delay in miliseconds as arguments.
+      const interval = setInterval(fetchWeather, 5000)
+      return () => clearInterval(interval)
+    }, [])
     // if there is a dependency in the dependency array the effect will run again when the dependency undergoes change. If its empty it will run once when the component mounts(added to the DOM)
-   }, []);
+   
 
 
    //here we set up the new activity
