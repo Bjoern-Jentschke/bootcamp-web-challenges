@@ -9,6 +9,9 @@ import { useEffect, useState } from 'react';
 function App() {
   // Why setting state in App.js? Possible answer: Parent element of Form.js. Here we want to change the state while
   // displaying the new activity
+// setting state for the weather (line30 and line 102). Returns a Boolean. If the weather is good then we display the good weather activities, vice versa.
+// setting state for the temperature. Will be displayed as a number next to the condition which is displayed as a weather emoji.
+
   //  const [activities, setActivities] = useState([]); Aufgabe 1//
    const [activities, setActivities] = useLocalStorageState("activities", {defaultValue: []});
    const [weather, setWeather] = useState();
@@ -46,11 +49,12 @@ function App() {
       setActivities([{...newActivity, id: uid()}, ...activities])
    }
 
+
   //setting const isGoodWeather and also for isBadWeather for bad weather
    const isGoodWeather = true;
    const isBadWeather = false;
 
-  //filtering the activities for good weather + training different function writings
+  //filtering the activities for good weather + practising different function writings
 
   //anonymous function with implicit return
   // const filteredGoodWeatherActivities = activities.filter((activity) => activity.isForGoodWeather === isGoodWeather)
@@ -86,6 +90,14 @@ function App() {
   const filteredBadWeatherActivities = activities.filter((activity) => activity.isForGoodWeather === isBadWeather)
 
 
+  //Here I create the functionality of the button element in the List/index.js. id serves as a argument which is used to identify the activities. 
+  // The setActivities will filter all activities for the activities that don't have the id that belongs to the pushed delete button. Because of that we need the strict inequality operator.
+  // In line 116, 127 and 133 the function is passed as a prop (onDeleteActivity) to the List element in List/index.js.
+  function handleDeleteActivity ({id}) {
+    return setActivities(activities.filter((activity) => activity.id !== id));
+  }
+
+
   return (
     <div className="App">
       <>
@@ -98,24 +110,27 @@ function App() {
               {condition} {temperature}°C
             </h1>
             <p>Oh happy days! Weather is really good (could be ice cold though). Let's get rolling. You have the following things that you can do:</p>
-            <List activities={filteredGoodWeatherActivities(isGoodWeather)}
-            isGoodWeather = {isGoodWeather}/>
+            <List 
+            activities={filteredGoodWeatherActivities(isGoodWeather)}
+            isGoodWeather = {isGoodWeather}
+            onDeleteActivity = {handleDeleteActivity}/>
           </>
         ) : (
           <>
             <h1>
               {condition} {temperature}°C
             </h1>
-            <p>Ahhh the weather today seems dreadful! But life is good so here are some things to do!</p>
+            <p>Ahhh the weather today seems dreadful(even though it could be damn hot)! But life is good so here are some things to do!</p>
             <List 
       activities={filteredBadWeatherActivities}
-            isGoodWeather={isBadWeather}/>
+            isGoodWeather={isBadWeather}
+            onDeleteActivity = {handleDeleteActivity}/>
           </>
         )}
       </>
         {/* passing the function handleAddActivity as a prop to the Form component */}
       <Form onAddActivity={handleAddActivity} />
-      <List activities={activities}/>
+      <List activities={activities} onDeleteActivity = {handleDeleteActivity}/>
     </div>
   );
 }

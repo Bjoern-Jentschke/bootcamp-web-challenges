@@ -11,7 +11,7 @@ export default function Form({onAddActivity}) {
         const activity = event.target.elements.activity.checked; // checked prevents default behavior (on)
 
         const newActivity = {name: name, isForGoodWeather: activity} //in newActivity we store the created object
-        console.log(newActivity)
+        // console.log(newActivity)
         onAddActivity(newActivity) //with the call of the onAddActivity prop we can create a new Object with the changed state in the App.js
         
         form.reset();

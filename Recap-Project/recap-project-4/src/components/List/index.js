@@ -1,9 +1,17 @@
 import "./List.css";
 
-export default function List ({activities}) {
+export default function List ({activities, onDeleteActivity}) {
     return (
         <ul>
-        {activities.map((activity) => (<li key={activity.id}>{activity.name}</li>))}
+            {/* here all activities that are created (look in App.js line 44) are mapped as a new array. Every activity has its own key(the id) and an activity name.
+            Also there is a delete button which works with an onClick event with a function as an argument (Line 96 App.js) if you dont pass the activity which is deleted as a argument,
+            the id stays undefined so the activity can not be deleted.*/}
+        {activities.map((activity) => (
+        <li key={activity.id}>{activity.name}{" "}
+            <button onClick={() => onDeleteActivity(activity)} type="button">
+            ❌
+            </button>
+        </li>))}
     </ul>
     )
 }
