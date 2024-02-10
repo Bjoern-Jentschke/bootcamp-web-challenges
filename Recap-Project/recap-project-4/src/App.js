@@ -20,6 +20,8 @@ function App() {
       setActivities([{...newActivity, id: uid()}, ...activities])
    }
 
+   const isGoodWeather = true;
+
   return (
     <div className="App">
       <header className="App-header">
