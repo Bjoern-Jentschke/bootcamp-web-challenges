@@ -12,7 +12,8 @@ function App() {
 // setting state for the weather (line30 and line 102). Returns a Boolean. If the weather is good then we display the good weather activities, vice versa.
 // setting state for the temperature. Will be displayed as a number next to the condition which is displayed as a weather emoji.
 
-  //  const [activities, setActivities] = useState([]); Aufgabe 1//
+  //  const [activities, setActivities] = useState([]); Aufgabe 1 --> important: empty array as the current use state, so that the 
+  // new activities are stored in the array with all other activities (line 50)//
    const [activities, setActivities] = useLocalStorageState("activities", {defaultValue: []});
    const [weather, setWeather] = useState();
    const [temperature, setTemperature] = useState();
