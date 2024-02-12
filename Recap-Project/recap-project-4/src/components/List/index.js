@@ -7,8 +7,8 @@ export default function List ({activities, onDeleteActivity}) {
             Also there is a delete button which works with an onClick event with a function as an argument (Line 96 App.js) if you dont pass the activity which is deleted as a argument,
             the id stays undefined so the activity can not be deleted.*/}
         {activities.map((activity) => (
-        <li key={activity.id}>{activity.name}{" "}
-            <button onClick={() => onDeleteActivity(activity)} type="button">
+        <li className="list" key={activity.id}>{activity.name}{" "}
+            <button className="button_delete" onClick={() => onDeleteActivity(activity.id)} type="button">
             ❌
             </button>
         </li>))}

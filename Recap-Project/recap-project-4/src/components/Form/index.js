@@ -20,17 +20,18 @@ export default function Form({onAddActivity}) {
     }
 
   return (
-    <form  onSubmit={handleSubmit} name="Activity">
-      <h2>Add new Activity: </h2>
-      <div>
-        <label htmlFor="name">Name: </label>
-        <input id="name" type="text" name="name" aria-label="name input field"></input>
+    <form  className="form" onSubmit={handleSubmit} name="Activity">
+      <h2 className="h2">Add new Activity: </h2>
+      <div className="input">
+        {/* duch Verknüpfung von htmlFor und id kein aria-label nötig */}
+        <label className="input__label" htmlFor="name">Name: </label>
+        <input className="input__field" id="name" type="text" name="name" aria-label="name input field"></input>
       </div>
-      <div>
-        <label htmlFor="activity">Good-weather activity: </label>
-        <input id="activity"  type="checkbox" name="activity" aria-label="good weather activity checkbox"></input>
+      <div className="check">
+        <label className="check__label" htmlFor="activity">Good-weather activity: </label>
+        <input className="check__check" id="activity"  type="checkbox" name="activity" aria-label="good weather activity checkbox"></input>
       </div>
-      <button type="submit" aria-label="submit button">Submit</button>
+      <button className="button" type="submit" aria-label="submit button">Submit</button>
     </form>
   );
 }
