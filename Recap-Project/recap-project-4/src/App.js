@@ -1,4 +1,4 @@
-// import './App.css';
+import './App.css';
 import Form from './components/Form/index';
 // import {useState} from "react" Aufgabe 1
 import {uid} from "uid"
@@ -58,12 +58,12 @@ function App() {
 
   //setting const isGoodWeather and also for isBadWeather for bad weather
    const isGoodWeather = true;
-   const isBadWeather = false;
+  //  const isBadWeather = false;
 
   //filtering the activities for good weather + practising different function writings
 
   //anonymous function with implicit return
-  // const filteredGoodWeatherActivities = activities.filter((activity) => activity.isForGoodWeather === isGoodWeather)
+  const filteredActivities = activities.filter((activity) => activity.isForGoodWeather === weather)
 
   // anonymous function with explicit return
 
@@ -83,23 +83,23 @@ function App() {
 
   //named function with filter method and if/else statement and explicit return (important: adding the isGoodWeather const  argument, also down in the list element (line 76))
 
-  function filteredGoodWeatherActivities (isGoodWeather) {
-  return activities.filter((activity) => {
-    if (activity.isForGoodWeather === isGoodWeather) {
-      return true;
-    } else {
-      return false;
-    }
-  })}
+  // function filteredGoodWeatherActivities (isGoodWeather) {
+  // return activities.filter((activity) => {
+  //   if (activity.isForGoodWeather === isGoodWeather) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // })}
 
   //Here I filter for all activities that have the key: isForGoodWeather === false
-  const filteredBadWeatherActivities = activities.filter((activity) => activity.isForGoodWeather === isBadWeather)
+  // const filteredBadWeatherActivities = activities.filter((activity) => activity.isForGoodWeather === isBadWeather)
 
 
   //Here I create the functionality of the button element in the List/index.js. id serves as a argument which is used to identify the activities. 
   // The setActivities will filter all activities for the activities that don't have the id that belongs to the pushed delete button. Because of that we need the strict inequality operator.
-  // In line 116, 127 and 133 the function is passed as a prop (onDeleteActivity) to the List element in List/index.js.
-  function handleDeleteActivity ({id}) {
+  // In line 116, 127 and 133 the function is passed as a prop (onDeleteActivity) to the List element in List/index.js. return ist hier nicht notwendig
+  function handleDeleteActivity (id) {
     return setActivities(activities.filter((activity) => activity.id !== id));
   }
 
@@ -109,32 +109,38 @@ function App() {
       <>
       {/* Here I use ternary operator to define if else. If the weather is good (line28 set as setWeather=data.condition) then the first condition after the "?" displays.
       here in the list all the filtered Good Weather Activities will be displayed (line 76). Also in the isGoodWeather prop the condition is checked with the variable from line 50.
-      After the ":" the else case is displayed. Here the bad weather condition. */}
-        {weather ? (
+    After the ":" the else case is displayed. Here the bad weather condition. */}
+        <h1 className='h1'>
+          {condition} {temperature}°C
+        </h1>
+        
+        {/* {weather ? (
           <>
-            <h1>
-              {condition} {temperature}°C
-            </h1>
-            <p>Oh happy days! Weather is really good (could be ice cold though). Let's get rolling. You have the following things that you can do:</p>
-            <List 
-            activities={filteredGoodWeatherActivities(isGoodWeather)}
-            isGoodWeather = {isGoodWeather}
-            onDeleteActivity = {handleDeleteActivity}/>
+          <h1>
+          {condition} {temperature}°C
+          </h1>
+          <p>Oh happy days! Weather is really good (could be ice cold though). Let's get rolling. You have the following things that you can do:</p>
+          <List 
+          activities={filteredActivities}
+          isGoodWeather = {isGoodWeather}
+          onDeleteActivity = {handleDeleteActivity}/>
           </>
-        ) : (
-          <>
+          ) : (
+            <>
             <h1>
-              {condition} {temperature}°C
+            {condition} {temperature}°C
             </h1>
             <p>Ahhh the weather today seems dreadful(even though it could be damn hot)! But life is good so here are some things to do!</p>
             <List 
-      activities={filteredBadWeatherActivities}
+            activities={filteredActivities}
             isGoodWeather={isBadWeather}
             onDeleteActivity = {handleDeleteActivity}/>
-          </>
-        )}
+            </>
+          )} */}
       </>
         {/* passing the function handleAddActivity as a prop to the Form component */}
+          <p className='text'>{weather ? "Oh happy days! Weather is really good (could be ice cold though). Let's get rolling. You have the following things that you can do:" : "Ahhh the weather today seems dreadful! But life is good so here are some things to do!"}</p>
+          <List activities={filteredActivities} onDeleteActivity={handleDeleteActivity}/>
       <Form onAddActivity={handleAddActivity} />
       <List activities={activities} onDeleteActivity = {handleDeleteActivity}/>
     </div>
