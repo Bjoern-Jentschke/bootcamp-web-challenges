@@ -17,7 +17,6 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>{id}</h1>
       <p>Name: {`${firstName} ${lastName}`}</p>
       <p>Age: {age}</p>
       <p>Profession: {profession}</p>
