@@ -13,6 +13,8 @@ export default function ProductList() {
     return;
   }
 
+  console.log(data);
+
   return (
     <>
       <StyledHeading>Available Fishes</StyledHeading>
